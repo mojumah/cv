@@ -5,7 +5,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Hello World"
-                ls -la
+                sh 'ls -la'
             }
         }
     }

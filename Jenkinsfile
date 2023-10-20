@@ -7,6 +7,7 @@ pipeline {
                 echo "Hello World"
                 sh 'ls -la'
                 sh 'pwd'
+                sh 'who'
                 sh 'aws s3 ls'
             }
         }

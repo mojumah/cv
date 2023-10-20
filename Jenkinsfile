@@ -4,11 +4,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo "Hello World"
-                sh 'ls -la'
-                sh 'pwd'
-                sh 'who'
-                sh 'aws s3 ls'
+                sh 'aws s3 sync MohammadJumah_CV.html s3://mohammad-jumah.com'
             }
         }
     }

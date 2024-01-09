@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body {
   @charset "UTF-8";
   /* @import url("https://use.typekit.net/mdv5bbe.css"); */
@@ -10,9 +9,3 @@ body {
     text-align: justify;
     text-justify: inter-word;
   }
-=======
-div {
-    text-align: justify;
-    text-justify: inter-word;
-  }
->>>>>>> b05c77f7fbf2b6365f2f96f318efc69c7b407bc0

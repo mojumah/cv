@@ -1,0 +1,25 @@
+Resources:
+
+  Ec2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: SG to allow SSH
+      SecurityGroupIngress:
+          - IpProtocol: tcp
+            FromPort: 22
+            ToPort: 22
+            CidrIp: 
+      SecurityGroupEgress:
+          - IpProtocol: tcp
+            FromPort: 22
+            ToPort: 22 
+            CidrIp: 
+  Ec2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.small
+      ImageId: ami-07d9b9ddc6cd8dd30
+      KeyName: jenkins
+      SecurityGroups:
+        - !Ref Ec2SecurityGroup
+        

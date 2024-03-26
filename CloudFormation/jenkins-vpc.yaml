@@ -1,3 +1,8 @@
+Parameters:
+  IP:
+    Type: String
+    Description: System Administrator IP
+    
 Resources:
 
   myVPC:
@@ -74,11 +79,11 @@ Resources:
         - IpProtocol: tcp
           FromPort: 443
           ToPort: 443
-          CidrIp: 5.80.4.71/32
+          CidrIp: !Ref IP
         - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
-          CidrIp: 5.80.4.71/32
+          CidrIp: !Ref IP
       SecurityGroupEgress:
         - IpProtocol: tcp
           FromPort: 443

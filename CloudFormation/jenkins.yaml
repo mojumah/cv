@@ -13,6 +13,7 @@ Resources:
     Properties:
       InstanceType: t2.small
       ImageId: ami-0c101f26f147fa7fd
+      KeyName: !Ref myKeyPair
       AvailabilityZone: "us-east-1a" 
       SecurityGroupIds:
         - Fn::ImportValue: !Sub "${NetworkStackNameParameter}-SecurityGroupID"

@@ -1,25 +1,31 @@
 Resources:
 
-  Ec2SecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupDescription: SG to allow SSH
-      SecurityGroupIngress:
-          - IpProtocol: tcp
-            FromPort: 22
-            ToPort: 22
-            CidrIp: 
-      SecurityGroupEgress:
-          - IpProtocol: tcp
-            FromPort: 22
-            ToPort: 22 
-            CidrIp: 
   Ec2Instance:
-    Type: AWS::EC2::Instance
+    Type: 'AWS::EC2::Instance'
     Properties:
       InstanceType: t2.small
-      ImageId: ami-07d9b9ddc6cd8dd30
-      KeyName: jenkins
-      SecurityGroups:
-        - !Ref Ec2SecurityGroup
-        
+      ImageId: ami-0c101f26f147fa7fd
+      SecurityGroupIds:
+        - sg-00cc1734b9be8eb16
+      SubnetId: subnet-01541c8f27d685ba3
+      UserData:
+        Fn::Base64:
+          !Sub |
+             #!/bin/bash
+             yum update -y
+             wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+             rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+             rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+             yum upgrade
+             dnf install java-17-amazon-corretto -y
+             yum install jenkins -y
+             systemctl enable jenkins
+             systemctl start jenkins
+             systemctl status jenkins
+
+  ElasticIP:
+    Type: 'AWS::EC2::EIP' 
+    Properties:
+      Domain: VPC
+      InstanceId: !Ref Ec2Instance  
+      

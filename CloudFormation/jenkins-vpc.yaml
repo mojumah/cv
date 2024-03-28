@@ -100,11 +100,13 @@ Outputs:
     Description: The subnet ID to use for public web servers
     Value: !Ref PublicSubnet
     Export:
-      Name: !Sub "${AWS::StackName}-PublicSubnet"
+      Name: 
+        'Fn::Sub': '${AWS::StackName}-SubnetID'
 
 
   SecurityGroupId:
     Description: Security Group Id 
     Value: !GetAtt InstanceSecurityGroup.GroupId 
     Export:
-      Name: !Sub "${AWS::StackName}-SecurityGroupIds"
+      Name: 
+        'Fn::Sub': '${AWS::StackName}-SecurityGroupID'

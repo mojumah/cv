@@ -1,2 +1,2 @@
-aws cloudformation create-stack --stack-name jenkins-vpc --template-body file://jenkins-vpc.yaml --parameters ParameterKey=IP,ParameterValue=$(curl -s http://checkip.amazonaws.com/ http://checkip.amazonaws.com/)/32
+aws cloudformation create-stack --stack-name jenkins-vpc --template-body file://jenkins-vpc.yaml --parameters ParameterKey=IP,ParameterValue=$(curl -s http://checkip.amazonaws.com/)/32
 aws cloudformation create-stack --stack-name mycloudjenkins --template-body file://jenkins.yaml

@@ -12,7 +12,7 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties:
       InstanceType: t2.small
-      ImageId: ami-0c101f26f147fa7fd
+      ImageId: ami-0a1179631ec8933d7
       KeyName: !Ref myKeyPair
       AvailabilityZone: "us-east-1a" 
       SecurityGroupIds:
@@ -24,6 +24,7 @@ Resources:
           !Sub |
              #!/bin/bash
              yum update -y
+             dnf install wget php-mysqlnd httpd php-fpm php-mysqli mariadb105-server php-json php php-devel -y
 
   ElasticIP:
     Type: 'AWS::EC2::EIP' 

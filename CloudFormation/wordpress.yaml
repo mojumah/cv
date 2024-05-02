@@ -12,7 +12,7 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties:
       InstanceType: t2.small
-      ImageId: ami-0a1179631ec8933d7
+      ImageId: ami-07caf09b362be10b8
       KeyName: !Ref myKeyPair
       AvailabilityZone: "us-east-1a" 
       SecurityGroupIds:
@@ -25,6 +25,10 @@ Resources:
              #!/bin/bash
              yum update -y
              dnf install wget php-mysqlnd httpd php-fpm php-mysqli mariadb105-server php-json php php-devel -y
+             wget https://wordpress.org/latest.tar.gz
+             tar -xzf latest.tar.gz
+             sudo systemctl start mariadb httpd
+             cp wordpress/wp-config-sample.php wordpress/wp-config.php
 
   ElasticIP:
     Type: 'AWS::EC2::EIP' 

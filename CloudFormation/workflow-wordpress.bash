@@ -1,2 +1,2 @@
 aws cloudformation create-stack --stack-name wordpress-vpc --template-body file://wordpress-vpc.yaml --parameters ParameterKey=IP,ParameterValue=$(curl -s http://checkip.amazonaws.com/)/32
-aws cloudformation create-stack --stack-name wordpress --template-body file://wordpress.yaml --parameters ParameterKey=myKeyPair,ParameterValue=wordpress
+aws cloudformation create-stack --stack-name wordpress --template-body file://wordpress.yaml --parameters ParameterKey=myKeyPair,ParameterValue=jenkins

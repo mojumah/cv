@@ -12,7 +12,7 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties:
       InstanceType: t2.small
-      ImageId: ami-07caf09b362be10b8
+      ImageId: ami-06c68f701d8090592  
       KeyName: !Ref myKeyPair
       AvailabilityZone: "us-east-1a" 
       SecurityGroupIds:
@@ -24,6 +24,10 @@ Resources:
           !Sub |
              #!/bin/bash
              yum update -y
+             yum install -y httpd
+             systemctl start httpd
+             systemctl enable httpd
+             echo "<h1>Large File Transfer</h1>" > /var/www/html/index.html
              dnf install wget php-mysqlnd httpd php-fpm php-mysqli mariadb105-server php-json php php-devel -y
              wget https://wordpress.org/latest.tar.gz
              tar -xzf latest.tar.gz

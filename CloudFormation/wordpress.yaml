@@ -27,7 +27,7 @@ Resources:
              yum install -y httpd
              systemctl start httpd
              systemctl enable httpd
-             echo "<h1>Large File Transfer</h1>" > /var/www/html/index.html
+             echo "<a href="https://s3.amazonaws.com/amalia.mohammad-jumah/birthday/Birthday-Party-Password-Protected.pdf" target="_blank">invitation to a birthday party</a>" > /var/www/html/index.html
              dnf install wget php-mysqlnd httpd php-fpm php-mysqli mariadb105-server php-json php php-devel -y
              wget https://wordpress.org/latest.tar.gz
              tar -xzf latest.tar.gz

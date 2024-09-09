@@ -1,3 +1,3 @@
-aws ec2 describe-images --owners amazon --filters "Name=platform,Values=windows" "Name=root-device-type,Values=ebs"
+aws ec2 describe-images --owners amazon --filters "Name=description,Values=Amazon Linux 2023*" --query 'sort_by(Images, &CreationDate)[].Name'
 aws cloudformation create-stack --stack-name wordpress-vpc --template-body file://wordpress-vpc.yaml --parameters ParameterKey=IP,ParameterValue=$(curl -s http://checkip.amazonaws.com/)/32
 aws cloudformation create-stack --stack-name wordpress --template-body file://wordpress.yaml --parameters ParameterKey=myKeyPair,ParameterValue=jenkins

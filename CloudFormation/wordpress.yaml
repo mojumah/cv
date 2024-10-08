@@ -22,18 +22,19 @@ Resources:
         - Fn::ImportValue: !Sub "${NetworkStackNameParameter}-SecurityGroupID"
       SubnetId: 
         Fn::ImportValue: !Sub "${NetworkStackNameParameter}-SubnetID"
+      Tags:
+        - Key: Content Managment System
+          Value: WordPress
       UserData:
         Fn::Base64:
           !Sub |
              #!/bin/bash
              cd /home/ec2-user
-             pwd > pwd.txt
-             yum update -y
-             yum install -y httpd
-             systemctl start httpd
-             systemctl enable httpd
-             echo "<a href="https://s3.amazonaws.com/amalia.mohammad-jumah/birthday/Birthday-Party-Password-Protected.pdf" target="_blank">invitation to a birthday party</a>" > /var/www/html/index.html
-             dnf install wget php-mysqlnd httpd php-fpm php-mysqli mariadb105-server php-json php php-devel -y
+             sudo dnf upgrade -y
+             sudo dnf install -y httpd wget php-fpm php-mysqli php-json php php-devel
+             sudo dnf install mariadb105-server 
+             sudo systemctl start httpd
+             sudo systemctl enable httpd
              wget https://wordpress.org/latest.tar.gz
              tar -xzf latest.tar.gz
              sudo systemctl start mariadb httpd

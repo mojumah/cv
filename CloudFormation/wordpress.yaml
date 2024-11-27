@@ -18,6 +18,7 @@ Resources:
       ImageId: !Ref LatestAmiId  
       KeyName: !Ref myKeyPair
       AvailabilityZone: "us-east-1a" 
+      IamInstanceProfile: SSMInstanceProfile
       SecurityGroupIds:
         - Fn::ImportValue: !Sub "${NetworkStackNameParameter}-SecurityGroupID"
       SubnetId: 
@@ -41,8 +42,9 @@ Resources:
              sudo chmod 2775 /var/www && find /var/www -type d -exec sudo chmod 2775 {} \;
              find /var/www -type f -exec sudo chmod 0664 {} \;
              sudo systemctl start mariadb
-             
-
+             wget https://wordpress.org/latest.tar.gz
+             tar -xzf latest.tar.gz
+             sudo systemctl start mariadb
 
   ElasticIP:
     Type: 'AWS::EC2::EIP' 

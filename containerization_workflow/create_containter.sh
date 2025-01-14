@@ -1,4 +1,4 @@
-# If you are creating the container store manually using Docker Hub skip to step 3
+# If you are creating the container store manually using Docker Hub skip to step on line 7
 # Create a container a container store on AWS. ECR
 aws ecr create-repository \
     --repository-name project-a/sample-repo \

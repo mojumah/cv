@@ -1,0 +1,40 @@
+body {
+
+    @charset "UTF-8";
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+  
+    div {
+      text-align: justify;
+      text-justify: inter-word;
+    
+    }
+    .topnav {
+      overflow: hidden;
+      background-color: #5130C8;
+    }
+  
+    .topnav a {
+      float: left;
+      color: #15ff00
+      text-align: centre;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+  
+    .topnav a:hover {
+      background-color: #5130C8;
+    }
+  
+    .topnav a.active {
+      background-color: #5130C8;
+      color:rgb(255, 255, 255);
+    }
+  
+    .b {
+      line-height: 2;
+  }
+
+  }
